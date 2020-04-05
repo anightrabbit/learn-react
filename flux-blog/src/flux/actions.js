@@ -8,14 +8,14 @@ import {
 
 export const memberListActions = {
 	fetchData(count) {
-		AppDispatcher.dispatch({
-			type: LOAD_MEMBERLIST.INIT,
-			payload: {
-				loading: true,
-				error: false,
-				memberList: [],
-			},
-		});
+		// AppDispatcher.dispatch({
+		// 	type: LOAD_MEMBERLIST.INIT,
+		// 	payload: {
+		// 		loading: true,
+		// 		error: false,
+		// 		memberList: [],
+		// 	},
+		// });
 		getFakeMembers(count)
 			.then(memberList => {
 				AppDispatcher.dispatch({

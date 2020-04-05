@@ -12,12 +12,13 @@ const PreviewList = (props) => {
 	},[loadData ,count]);
 
 	return error ? <p>Oops error</p>
- 		: loading ? <p>loading...</p>
 		: memberList.map(item => <Preview key={item.email}
 																			name={item.name}
 																			gender={item.gender}
 																			email={item.email}
 																			picture={item.picture}
+																			id={item.id}
+																			loading={loading}
 														/>);
 }
 	
