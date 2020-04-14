@@ -2,26 +2,23 @@ import React from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import { Layout } from 'antd';
 
-import Nav from './layouts/Nav';
-import Routes from './routes/';
+import Footer from './layouts/Footer';
+import Content from './layouts/Content';
+import Header from './layouts/Header';
+// import Slider from './layouts/Slider';
 
 import './App.css';
-
-const { Header, Footer, Content } = Layout;
 
 
 const App = () =>
   <BrowserRouter>
   	<Layout>
-  		<Header>
-    		<Nav />
-  		</Header>
-			<Content>
-			  <Routes />
-			</Content>
-			<Footer>
-				@2020 anightrabbi@gmail.com
-			</Footer>
+  		<Header />
+      <Layout>
+        {/* <Slider /> */}
+			  <Content />
+      </Layout>
+			<Footer />
   	</Layout>
   </BrowserRouter>
 

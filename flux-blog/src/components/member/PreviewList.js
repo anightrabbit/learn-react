@@ -1,17 +1,21 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
+import { Card } from 'antd';
 
 import Preview from './Preview';
 
+const cardStyle = {
+	margin: 10
+}
 
 const PreviewList = (props) => {
 	const {loading, error, memberList, loadData, count } = props;
 
 	useEffect(()=>{
 		loadData(count);
-	},[loadData ,count]);
-
-	return error ? <p>Oops error</p>
+	},[loadData, count]);
+	return <Card title="会员列表" style={cardStyle}>
+	{	error ? <p>Oops error</p>
 		: memberList.map(item => <Preview key={item.email}
 																			name={item.name}
 																			gender={item.gender}
@@ -19,7 +23,9 @@ const PreviewList = (props) => {
 																			picture={item.picture}
 																			id={item.id}
 																			loading={loading}
-														/>);
+														/>)
+	}
+	</Card>
 }
 	
 

@@ -1,13 +1,13 @@
 import {
-	LOAD_MEMBERLIST
+	LOAD_MEMBERLIST, LOAD_TRAVELLERLIST
 } from './constants';
 import AppDispatcher from './dispatcher';
 import {
 	getFakeMembers
 } from '../api/config';
 
-export const memberListActions = {
-	fetchData(count) {
+export const Actions = {
+	fetchMemberListData(count) {
 		// AppDispatcher.dispatch({
 		// 	type: LOAD_MEMBERLIST.INIT,
 		// 	payload: {
@@ -34,6 +34,37 @@ export const memberListActions = {
 						loading: false,
 						error: true,
 						memberList: [],
+					},
+				});
+			})
+	},
+	fetchTravellerListData(count) {
+		// AppDispatcher.dispatch({
+		// 	type: LOAD_TRAVELLERLIST.INIT,
+		// 	payload: {
+		// 		loading: true,
+		// 		error: false,
+		// 		travellerList: [],
+		// 	},
+		// });
+		getFakeMembers(count)
+			.then(travellerList => {
+				AppDispatcher.dispatch({
+					type: LOAD_TRAVELLERLIST.SUCCESS,
+					payload: {
+						loading: false,
+						error: false,
+						travellerList,
+					},
+				});
+			})
+			.catch(error => {
+				AppDispatcher.dispatch({
+					type: LOAD_TRAVELLERLIST.ERROR,
+					payload: {
+						loading: false,
+						error: true,
+						travellerList: [],
 					},
 				});
 			})

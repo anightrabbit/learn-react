@@ -2,12 +2,11 @@ import React from 'react';
 
 import { Layout } from 'antd'
 
-import PreviewInfo from '../../components/detail/PreviewInfo';
+import PreviewInfo from '../../components/member/PreviewInfo';
 
 const Detail = (props)=> {
-	const { match, location } = props;
+	const { location } = props;
 	return	<Layout>
-		<h1>{match.params.id}</h1>
 		<PreviewInfo data={location.state} loading={true} />
 	</Layout>;
 }

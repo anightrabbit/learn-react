@@ -1,14 +1,18 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 
-import Home from '../views/home/';
-import Detail from '../views/detail';
+import Member from '../views/member/';
+import MemberDetail from '../views/member/detail';
+import Traveller from '../views/traveller';
+import TravellerDetail from '../views/traveller/detail';
 
 const Routes = () =>
 	<Switch>
-    <Route path="/detail/:id" component={Detail} />
+    <Route path="/member/:id" component={MemberDetail} />
+    <Route path="/traveller/:id" component={TravellerDetail} />
+    <Route path="/traveller" component={Traveller} />
     <Route path="/">
-      <Home />
+      <Member />
     </Route>
   </Switch>
 
