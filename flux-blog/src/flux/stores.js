@@ -5,13 +5,22 @@ import {
 import AppDispatcher from './dispatcher';
 // import { memberListActions } from './actions';
 
-class MemberListStore extends ReduceStore {
+
+
+class AppStore extends ReduceStore {
   getInitialState() {
     return {
-      loading: true,
-      error: false,
-      memberList: [],
-    };
+      member: {
+        loading: true,
+        error: false,
+        memberList: [],
+      },
+      traveller: {
+        loading: true,
+        error: false,
+        travellerList: [],
+      }
+    }
   }
 
   reduce (state, action) {
@@ -40,26 +49,6 @@ class MemberListStore extends ReduceStore {
           // loading: false,
           ...action.payload
         };
-
-      default:
-        return state;
-    }
-  }
-}
-
-export const memberListStore = new MemberListStore(AppDispatcher);
-
-class TravellerListStore extends ReduceStore {
-  getInitialState() {
-    return {
-      loading: true,
-      error: false,
-      travellerList: [],
-    };
-  }
-
-  reduce (state, action) {
-    switch (action.type) {
       case LOAD_TRAVELLERLIST.INIT:
         return {
           ...this.state,
@@ -77,12 +66,10 @@ class TravellerListStore extends ReduceStore {
           ...this.state,
           ...action.payload
         };
-
       default:
         return state;
     }
   }
 }
 
-export const travellerListStore = new TravellerListStore(AppDispatcher);
-
+export const appStore = new AppStore(AppDispatcher);

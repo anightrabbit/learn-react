@@ -7,65 +7,82 @@ import {
 	getFakeMembers
 } from '../api/config';
 
+const dispatchAction = ({type, payload}) => {
+	console.log(type, payload);
+	AppDispatcher.dispatch({type, payload});
+}
+
 export const fetchMemberListData = (count) => {
-	// AppDispatcher.dispatch({
-	// 	type: LOAD_MEMBERLIST.INIT,
-	// 	payload: {
-	// 		loading: true,
-	// 		error: false,
-	// 		memberList: [],
-	// 	},
-	// });
+	dispatchAction({
+		type: LOAD_MEMBERLIST.INIT,
+		payload: {
+			member: {
+				loading: true,
+				error: false,
+				memberList: [],
+			}
+		},
+	});
 	getFakeMembers(count)
 		.then(memberList => {
-			AppDispatcher.dispatch({
+			dispatchAction({
 				type: LOAD_MEMBERLIST.SUCCESS,
 				payload: {
-					loading: false,
-					error: false,
-					memberList,
+					member: {
+						loading: false,
+						error: false,
+						memberList,
+					}
 				},
 			});
 		})
 		.catch(error => {
-			AppDispatcher.dispatch({
+			dispatchAction({
 				type: LOAD_MEMBERLIST.ERROR,
 				payload: {
-					loading: false,
-					error: true,
-					memberList: [],
+					member: {
+						loading: false,
+						error: true,
+						memberList: [],
+					}
 				},
 			});
 		})
 };
 
 export const fetchTravellerListData = (count) => {
-	// AppDispatcher.dispatch({
-	// 	type: LOAD_TRAVELLERLIST.INIT,
-	// 	payload: {
-	// 		loading: true,
-	// 		error: false,
-	// 		travellerList: [],
-	// 	},
-	// });
+	dispatchAction({
+		type: LOAD_TRAVELLERLIST.INIT,
+		payload: {
+			traveller: {
+				loading: true,
+				error: false,
+				travellerList: [],
+			}
+		},
+	});
 	getFakeMembers(count)
 		.then(travellerList => {
-			AppDispatcher.dispatch({
+			dispatchAction({
 				type: LOAD_TRAVELLERLIST.SUCCESS,
 				payload: {
-					loading: false,
-					error: false,
-					travellerList,
+					traveller:{
+						loading: false,
+						error: false,
+						travellerList,
+					}
 				},
 			});
 		})
 		.catch(error => {
-			AppDispatcher.dispatch({
+			dispatchAction({
 				type: LOAD_TRAVELLERLIST.ERROR,
 				payload: {
-					loading: false,
-					error: true,
-					travellerList: [],
+					traveller: {
+						loading: false,
+						error: true,
+						travellerList: [],
+					}
 				},
 			});
 		})
