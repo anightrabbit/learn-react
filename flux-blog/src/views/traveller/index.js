@@ -6,7 +6,7 @@ import { Container } from 'flux/utils';
 
 import CardGridList from '../../components/traveller/CardGridList';
 
-import { Actions } from '../../flux/actions';
+import { fetchTravellerListData } from '../../flux/actions';
 import { travellerListStore } from '../../flux/stores';
 
 
@@ -16,7 +16,7 @@ const calculateState = () => travellerListStore.getState();
 
 const Traveller = (props) => {
 	return <Layout>
-		<CardGridList count={4} {...props} loadData={Actions.fetchTravellerListData} />
+		<CardGridList count={4} {...props} loadData={fetchTravellerListData} />
 	</Layout>;
 }
 

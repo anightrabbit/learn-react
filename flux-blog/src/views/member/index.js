@@ -6,7 +6,7 @@ import { Container } from 'flux/utils';
 
 import PreviewList from '../../components/member/PreviewList';
 
-import { Actions } from '../../flux/actions';
+import { fetchMemberListData } from '../../flux/actions';
 import { memberListStore } from '../../flux/stores';
 
 
@@ -14,10 +14,10 @@ const getStores = () => [memberListStore];
 
 const calculateState = () => memberListStore.getState();
 
-const Home = (props) => {
+const Member = (props) => {
 	return <Layout>
-		<PreviewList count={10} {...props} loadData={Actions.fetchMemberListData} />
+		<PreviewList count={10} {...props} loadData={fetchMemberListData} />
 	</Layout>;
 }
 
-export default Container.createFunctional(Home, getStores, calculateState);
+export default Container.createFunctional(Member, getStores, calculateState);
